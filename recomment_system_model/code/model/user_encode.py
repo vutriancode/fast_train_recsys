@@ -35,7 +35,7 @@ class UserEncode(nn.Module):
             #print(iii)
             p_embed.append(self.up_history[i][iii])
             r_embed.append(self.ur_history[i][iii])
-        p_embed=torch.FloatTensor(p_embed, device=self.device)
+        p_embed=torch.cuda.FloatTensor(p_embed, device=self.device)
         u_rep = self.u2e.weight[nodes.numpy()].to(self.device)
         #p_embed = self.i2e.weight[j].to(self.device)
         p_embed = F.relu(self.w_e(p_embed))

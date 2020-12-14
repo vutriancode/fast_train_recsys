@@ -42,7 +42,7 @@ class PostEncode(nn.Module):
             #with torch.no_grad():
                 #post_rep = self.contents_embedding(self.pr_content[i])
         
-        post_rep = torch.FloatTensor(post_rep, device=self.device)
+        post_rep = torch.cuda.FloatTensor(post_rep)
         post_rep = F.relu(self.w_e(post_rep))
         u_embed, r_embed = self.u2e.weight[u_embed], self.r2e.weight[r_embed]
         x = torch.cat((u_embed,r_embed),1)
